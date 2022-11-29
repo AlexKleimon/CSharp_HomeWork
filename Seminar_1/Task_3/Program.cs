@@ -7,11 +7,11 @@ Console.WriteLine("Четыне числа от 1 до {0}: ", N);
 int count = 1;
 while (count <= N)
 {
+
+    if ((count % 2) == 0)
     {
-        if ((count % 2) == 0)
-        {
-            Console.WriteLine(count);
-        }
+        Console.WriteLine(count);
     }
+
     count++;
 }
