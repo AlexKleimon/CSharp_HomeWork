@@ -2,4 +2,14 @@
 4 -> да
 -3 -> нет
 7 -> нет */
+int a = new Random().Next(-9, 10);
+Console.WriteLine("Число а = {0};",a);
 
+if ((a % 2) == 0)
+{
+    Console.WriteLine("Число {0} - четное.", a);
+}
+else 
+{
+    Console.WriteLine("Число {0} - нечетное.", a);
+}
