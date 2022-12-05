@@ -8,6 +8,7 @@
 */
 while (true)
 {
+    Console.WriteLine("Введите номер дня (от 1 до 7):");
     int numberDay = int.Parse(Console.ReadLine());
     if (numberDay > 0 && numberDay < 8)
     {
@@ -17,4 +18,6 @@ while (true)
             Console.WriteLine($"День под номером {numberDay} не является выходным днём.");
         break;
     }
+    else
+        Console.WriteLine("Дня под номером {0} не существует.", numberDay);
 }
