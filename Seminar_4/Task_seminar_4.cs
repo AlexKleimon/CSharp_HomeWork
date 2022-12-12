@@ -11,10 +11,10 @@ public class Task_seminar_4
         Console.WriteLine("Введите количество элементов массива:");
         int number = int.Parse(Console.ReadLine());
         int[] arry = newArray(number);
-        fillArray(0, 14, arry);
-        Console.WriteLine("Число в 10-ой системе счисления: {0}", Print(arry));
+        fillArray(0, 15, arry);
+        Console.WriteLine("Число в 15-ой системе счисления: {0}", Print(arry));
         double number10 = ConvDecimalSys(arry);
-        Console.WriteLine($"Число в 15-ой системе счисления: {number10}");
+        Console.WriteLine($"Число в 10-ой системе счисления: {number10}");
     }
     /// <summary>
     /// Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
@@ -24,7 +24,7 @@ public class Task_seminar_4
     /// 82 -> 10<br/>
     /// 9012 -> 12<br/>
     ///</para>
-    /// Строки использовать нельзя.Ы
+    /// Строки использовать нельзя.
     /// </summary>
     static public void Task_27()
     {

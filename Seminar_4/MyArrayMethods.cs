@@ -23,11 +23,11 @@ public class MyArrayMethods
         int size = arry.Length;
         for (int i = 0; i < size; i++)
         {
-            arry[i] = new Random().Next(min, max + 1);
+            arry[i] = Random.Shared.Next(min, max);
         }
     }
     /// <summary>
-    /// Метод записи массива в переменную типа String.
+    /// Метод записи массива в переменную типа String, записывая массив числом в 15-ой системе счисления.
     /// </summary>
     /// <param name="arry">Массив, который необходимо записать в переменную типа String.</param>
     /// <returns>Переменная типа String.</returns>
@@ -38,7 +38,18 @@ public class MyArrayMethods
         Console.Write("Массив: ");
         for (int i = 0; i < size; i++)
         {
-            Print += $"({arry[i]})";
+            if (arry[i] == 10)
+                Print += "A";
+            else if (arry[i] == 11)
+                Print += "B";
+            else if (arry[i] == 12)
+                Print += "C";
+            else if (arry[i] == 13)
+                Print += "D";
+            else if (arry[i] == 14)
+                Print += "C";
+            else
+                Print += $"{arry[i]}";
         }
         return Print;
     }
