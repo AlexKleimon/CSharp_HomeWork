@@ -4,10 +4,10 @@
 public class MyArrayMethods
 {
     /// <summary>
-    /// Метод создания массива.
+    /// Метод создания одномерного массива.
     /// </summary>
     /// <param name="numbArray">Количество элементов в массиве.</param>
-    /// <returns>Массив из numbArray элементов.</returns>
+    /// <returns>Одномерный массив из numbArray элементов.</returns>
     public static int[] newArray(int numbArray)
     {
         return new int[numbArray];
