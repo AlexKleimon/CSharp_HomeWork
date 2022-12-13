@@ -17,4 +17,18 @@ public class Task_seminar_5
         int count = MyMethods.EvenNumbers(arry);
         Console.WriteLine($"Количество четных чисел в массиве равно: {count}.");
     }
+    /// <summary>
+    /// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+    ///<para>Пример:<br/>[3, 7, 23, 12] -> 19;<br/>[-4, -6, 89, 6] -> 0.</para>
+    /// </summary>
+    public static void Task_36()
+    {
+        Console.WriteLine("Введите количество элементов массива:");
+        int numberSize = int.Parse(Console.ReadLine());
+        int[] arry = MyArrayMethods.newArray(numberSize);
+        MyArrayMethods.fillArray(0, 10, arry);
+        Console.WriteLine(MyArrayMethods.Print(arry));
+        int sum = MyMethods.SumOddNumbers(arry);
+        Console.WriteLine($"Сумма чисел стоящих на нечётных позициях в массиве равна: {sum}.");
+    }
 }

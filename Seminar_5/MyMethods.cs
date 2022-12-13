@@ -1,3 +1,6 @@
+/// <summary>
+/// Различные математические методы с числами в одномерных массивах.
+/// </summary>
 public class MyMethods
 {
     /// <summary>
@@ -14,5 +17,19 @@ public class MyMethods
                 count++;
         }
         return count;
+    }
+    /// <summary>
+    /// Метод подсчета суммы чисел, стоящих на нечетных позициях массива.
+    /// </summary>
+    /// <param name="array">Одномерный массив чисел.</param>
+    /// <returns>Сумма чисел.</returns>
+    public static int SumOddNumbers(int[] array)
+    {
+        int sum = 0;
+        for (int i = 1; i < array.Length; i += 2)
+        {
+            sum += array[i];
+        }
+        return sum;
     }
 }
