@@ -31,4 +31,18 @@ public class Task_seminar_5
         int sum = MyMethods.SumOddNumbers(arry);
         Console.WriteLine($"Сумма чисел стоящих на нечётных позициях в массиве равна: {sum}.");
     }
+    /// <summary>
+    /// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+    ///<para>Пример:<br/>[3 7 22 2 78] -> 76.</para>
+    /// </summary>
+    public static void Task_38()
+    {
+        Console.WriteLine("Введите количество элементов массива:");
+        int numberSize = int.Parse(Console.ReadLine());
+        float[] arry = MyArrayMethods.newArrayF(numberSize);
+        MyArrayMethods.fillArrayF(100, arry);
+        Console.WriteLine(MyArrayMethods.PrintF(arry));
+        float dif = MyArrayMethods.MinMax(arry);
+        Console.WriteLine($"Разница между максимальным и минимальным элементов массива равна: {dif}.");
+    }
 }
