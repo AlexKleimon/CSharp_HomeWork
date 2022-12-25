@@ -19,7 +19,7 @@ public class MyMethodsArray
     /// <param name="choice">Выбор заполнения массива: 1 - заполнить массив вещественными числами;<br/>
     /// 0 - заполнить массив целыми числами;<br/>
     /// любое другое число - заполнить массив нулями.</param>
-    public static void CreatArray(double[,] array, int min, int max, int choice)
+    public static void FillArray(double[,] array, int min, int max, int choice)
     {
         int lengthLine = array.GetLength(0);
         int lengthPillar = array.GetLength(1);

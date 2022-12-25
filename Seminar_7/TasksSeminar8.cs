@@ -15,7 +15,7 @@ class TasksSeminar8
         Console.WriteLine("Введите количество столбцов в массиве:");
         int lengthPillar = MyMethodsArray.InputLinesPillar();
         double[,] arry = MyMethodsArray.NewDoubleArray(lengthLine, lengthPillar);
-        MyMethodsArray.CreatArray(arry, 0, 100, 1);
+        MyMethodsArray.FillArray(arry, 0, 100, 1);
         string text = MyMethodsArray.Print(arry);
         Console.WriteLine(text);
     }
@@ -34,10 +34,10 @@ class TasksSeminar8
         int positionLines = MyMethodsArray.InputLinesPillar();
         Console.WriteLine("Введите номер столбца массива, в котором находится нужное число:");
         int positionPillar = MyMethodsArray.InputLinesPillar();
-        int lengthLine = Random.Shared.Next(1, 11);
-        int lengthPillar = Random.Shared.Next(1, 11);
+        int lengthLine = Random.Shared.Next(3, 11);
+        int lengthPillar = Random.Shared.Next(3, 11);
         double[,] arry = MyMethodsArray.NewDoubleArray(lengthLine, lengthPillar);
-        MyMethodsArray.CreatArray(arry, 0, 10, 1);
+        MyMethodsArray.FillArray(arry, 0, 10, 1);
         Console.WriteLine(MyMethodsArray.Print(arry));
         if (lengthLine <= positionLines || lengthPillar <= positionPillar)
             Console.WriteLine($"Элемента с индекосами [{positionLines,-2}, {positionPillar,1}] в массиве нет.");
@@ -60,11 +60,29 @@ class TasksSeminar8
         int lengthLine = Random.Shared.Next(3, 11);
         int lengthPillar = Random.Shared.Next(3, 11);
         double[,] arry = MyMethodsArray.NewDoubleArray(lengthLine, lengthPillar);
-        MyMethodsArray.CreatArray(arry, 0, 10, 0);
+        MyMethodsArray.FillArray(arry, 0, 10, 0);
         Console.WriteLine("Двумерный массив целых чисел:");
         Console.WriteLine(MyMethodsArray.Print(arry));
         double[] average = MyMethodsArray.Average(arry);
         Console.WriteLine("Среднее арифметическое каждого столбца:");
         Console.WriteLine(MyMethodsArray.PrintLineArray(average));
+    }
+    /// <summary>
+    /// Создать приложение по обработке двумерного массива строк.<br/>
+    /// Приложение позволяет сгенерирвать массив и показать сколько в этом массиве "слов" содержащих восклицательный знак ("!").<br/>
+    /// Требование: минимум 4 метода, IndexOf использовать нельзя.<br/>
+    /// </summary>
+    public static void TaskAddit()
+    {
+        Console.WriteLine("Введите количество строк в массиве:");
+        int lengthLine = MyMethodsArray.InputLinesPillar();
+        Console.WriteLine("Введите количество столбцов в массиве:");
+        int lengthPillar = MyMethodsArray.InputLinesPillar();
+        string[,] arrayWords = MyMethods.newArrayString(lengthLine, lengthPillar);
+        string[] textArray = {"Hi!","good","beckon","nice!","flowchart","long","office","physically","NO!","alone!!!","pizza...",
+                                "wondows","food","clear","clone","lists","BLACK!","Yellow?","Who?","BOSS!", "FLY!!!", "jobs!","player0_0"};
+        MyMethods.FillRandomStringArray(arrayWords, textArray);
+        Console.WriteLine(MyMethods.PrintStringArray(arrayWords));
+        Console.WriteLine($"Количество слов с восклицательным знаком равно: {MyMethods.CountWords(arrayWords)}.");
     }
 }
