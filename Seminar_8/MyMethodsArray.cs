@@ -47,4 +47,38 @@ public class MyMethodsArray
         return text;
     }
 
+    public static int [] SumElementsRowsArray(int[,] array)
+    {
+        int lengthLine = array.GetLength(0);
+        int lengthColumn = array.GetLength(1);
+        int[] dataArray = new int[lengthLine];
+        int sum;
+        for (int i = 0; i < lengthLine; i++)
+        {
+            sum = 0;
+            for (int j = 0; j < lengthColumn; j++)
+            {
+                sum += array[i, j];
+            }
+            dataArray[i] = sum;
+        }
+        return dataArray;
+    }
+
+    public static int MinElemetsSum (int [] array)
+    {
+        int size = array.Length;
+        int min = array[0];
+        int index = 0;
+        for (int i = 1; i < size; i++)
+        {
+            if (array[i] < min)
+            {
+                min = array[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+
 }

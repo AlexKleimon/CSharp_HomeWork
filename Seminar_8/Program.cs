@@ -23,3 +23,4 @@
     18 20
     15 18
 */
+Tasks_Seminar_8.Task56();
