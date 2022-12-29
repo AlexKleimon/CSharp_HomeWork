@@ -1,6 +1,14 @@
 public class MyMethodsArray
 {
     /// <summary>
+    /// Метод ввода числового значения в консоль.
+    /// </summary>
+    /// <returns>Числовое значение типа int.</returns>
+    public static int InputSizeArray()
+    {
+        return int.Parse(Console.ReadLine());
+    }
+    /// <summary>
     /// Метод создания двумерного массива типа int.
     /// </summary>
     /// <param name="lengthLine">Количество строк двумерного массива.</param>
@@ -31,7 +39,7 @@ public class MyMethodsArray
     /// </summary>
     /// <param name="array">Двумерный массив типа int.</param>
     /// <returns>Переменная типа string.</returns>
-    public static string Print(int[,] array)
+    public static string PrintBivArray(int[,] array)
     {
         string text = string.Empty;
         int lengthLine = array.GetLength(0);
@@ -46,8 +54,55 @@ public class MyMethodsArray
         }
         return text;
     }
-
-    public static int [] SumElementsRowsArray(int[,] array)
+    /// <summary>
+    /// Метод записи одномерного массива типа int в переменную типа string.
+    /// </summary>
+    /// <param name="array">Одномерный массив типа int.</param>
+    /// <returns>Переменная типа string.</returns>
+    public static string PrintArray(int[] array)
+    {
+        string text = string.Empty;
+        int lengthLine = array.Length;
+        for (int i = 0; i < lengthLine; i++)
+        {
+            text += $"Сумма строки {i}: {array[i],-4} ";
+        }
+        return text;
+    }
+    /// <summary>
+    /// Метод сортировки выбором.
+    /// </summary>
+    /// <param name="array">Двумерный массив типа int.</param>
+    public static void Sort(int[,] array)
+    {
+        int maxIndex, maxElement;
+        int lengthLine = array.GetLength(0);
+        int lengthColumn = array.GetLength(1);
+        for (int i = 0; i < lengthLine; i++)
+        {
+            for (int k = 0; k < lengthColumn; k++)
+            {
+                maxElement = array[i, k];
+                maxIndex = k;
+                for (int j = k+1; j < lengthColumn; j++)
+                {
+                    if (array[i, j] > maxElement)
+                    {
+                        maxElement = array[i, j];
+                        maxIndex = j;
+                    }
+                }
+                array[i, maxIndex] = array[i, k];
+                array[i, k] = maxElement;
+            }
+        }
+    }
+    /// <summary>
+    /// Метод подсчета суммы элементов каждой строки двумерного массива типа int.
+    /// </summary>
+    /// <param name="array">Двумерный массив.</param>
+    /// <returns>Одномерный массив типа int с сумами элементов каждой строки двумерного массива.</returns>
+    public static int[] SumElementsRowsArray(int[,] array)
     {
         int lengthLine = array.GetLength(0);
         int lengthColumn = array.GetLength(1);
@@ -64,8 +119,12 @@ public class MyMethodsArray
         }
         return dataArray;
     }
-
-    public static int MinElemetsSum (int [] array)
+    /// <summary>
+    /// Метод поиска минимального элемента одномерного массива типа int.
+    /// </summary>
+    /// <param name="array">Одномерный массив.</param>
+    /// <returns>Индекс наименьшего элемента массива.</returns>
+    public static int MinElemetsSum(int[] array)
     {
         int size = array.Length;
         int min = array[0];
