@@ -6,7 +6,9 @@ public class MyMethodsArray
     /// <returns>Числовое значение типа int.</returns>
     public static int InputSizeArray()
     {
-        return int.Parse(Console.ReadLine());
+        int result;
+        while (!int.TryParse(Console.ReadLine(), out result)) ;
+        return result;
     }
     /// <summary>
     /// Метод создания двумерного массива типа int.
@@ -17,6 +19,17 @@ public class MyMethodsArray
     public static int[,] NewArray(int lengthLine, int lengthColumn)
     {
         return new int[lengthLine, lengthColumn];
+    }
+    /// <summary>
+    /// Метод создания трехмерного массива типа int.
+    /// </summary>
+    /// <param name="lengthX">Количество элементов по оси X.</param>
+    /// <param name="lengthY">Количество элементов по оси Y.</param>
+    /// <param name="lengthZ">Количество элементов по оси Z.</param>
+    /// <returns>Трехмерный массив.</returns>
+    public static int[,,] NewArrayThree(int lengthX, int lengthY, int lengthZ)
+    {
+        return new int[lengthX, lengthY, lengthZ];
     }
     /// <summary>
     /// Метод заполнения двумерного массива типа int случайными числами.
@@ -33,6 +46,55 @@ public class MyMethodsArray
                 array[i, j] = Random.Shared.Next(0, 10);
             }
         }
+    }
+    /// <summary>
+    /// Метод заполенния трехмерного массива целыми неповторяющимися случайными числами от 10 до 99 включительно.
+    /// </summary>
+    /// <param name="array">Трехмерный массив.</param>
+    public static void FillArrayThree(int[,,] array)
+    {
+        bool tr;
+        int number = 0;
+        int lengthX = array.GetLength(0);
+        int lengthY = array.GetLength(1);
+        int lengthZ = array.GetLength(2);
+        for (int i = 0; i < lengthX; i++)
+        {
+            for (int j = 0; j < lengthY; j++)
+            {
+                for (int k = 0; k < lengthZ; k++)
+                {
+                    number = Random.Shared.Next(10, 100);
+                    tr = EqualityCheck(array, number);
+                    if (tr)
+                        array[i, j, k] = number;
+                    else
+                        k--;
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// Метод поиска повторных чисел в трехмерном массиве.
+    /// </summary>
+    /// <param name="array">Трехмерный массив.</param>
+    /// <param name="number">Число которое необходимо найти в массиве.</param>
+    /// <returns>Возвращает false если число найдено.</returns>
+    public static bool EqualityCheck(int[,,] array, int number)
+    {
+        bool tr = true;
+        for (int n = 0; n < array.GetLength(0); n++)
+        {
+            for (int l = 0; l < array.GetLength(1); l++)
+            {
+                for (int m = 0; m < array.GetLength(2); m++)
+                {
+                    if (array[n, l, m] == number)
+                        tr = false;
+                }
+            }
+        }
+        return tr;
     }
     /// <summary>
     /// Метод записи двумерного массива типа int в переменную типа string.
@@ -69,6 +131,26 @@ public class MyMethodsArray
         }
         return text;
     }
+    public static string PrintArrayThree(int[,,] array)
+    {
+        string text = string.Empty;
+        int lengthX = array.GetLength(0);
+        int lengthY = array.GetLength(1);
+        int lengthZ = array.GetLength(2);
+        for (int i = 0; i < lengthX; i++)
+        {
+            for (int j = 0; j < lengthY; j++)
+            {
+                for (int k = 0; k < lengthZ; k++)
+                {
+                    text += $"{array[i, j, k],-2}({i}, {j}, {k})  ";
+                }
+                text += "\n";
+            }
+            text += "\n";
+        }
+        return text;
+    }
     /// <summary>
     /// Метод сортировки выбором.
     /// </summary>
@@ -84,7 +166,7 @@ public class MyMethodsArray
             {
                 maxElement = array[i, k];
                 maxIndex = k;
-                for (int j = k+1; j < lengthColumn; j++)
+                for (int j = k + 1; j < lengthColumn; j++)
                 {
                     if (array[i, j] > maxElement)
                     {
@@ -139,5 +221,32 @@ public class MyMethodsArray
         }
         return index;
     }
-
+    /// <summary>
+    /// Метод нахождения произведения двух матриц.
+    /// </summary>
+    /// <param name="array1">Первая матрица.</param>
+    /// <param name="array2">Вторая матрица.</param>
+    /// <returns>Произведение матриц.</returns>
+    public static int[,] MultiMatrix(int[,] array1, int[,] array2)
+    {
+        int lengthLine1 = array1.GetLength(0);
+        int lengthColumn1 = array1.GetLength(1); // должно быть равно количеству строк второй матрицы
+        int lengthLine2 = array2.GetLength(0);
+        int lengthColumn2 = array2.GetLength(1);
+        int sum = 0;
+        int[,] multi = MyMethodsArray.NewArray(lengthLine1, lengthColumn2);
+        for (int i = 0; i < lengthLine1; i++)
+        {
+            for (int j = 0; j < lengthColumn2; j++)
+            {
+                for (int k = 0; k < lengthColumn1; k++)
+                {
+                    sum += array1[i, k] * array2[k, j];
+                }
+                multi[i, j] = sum;
+                sum = 0;
+            }
+        }
+        return multi;
+    }
 }
